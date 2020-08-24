@@ -87,6 +87,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "200713_union_find", "200713
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "200713_boj9938 방 청소", "200713_boj9938 방 청소\200713_boj9938 방 청소.vcxproj", "{67D93E38-8BCE-451F-B6FF-B8188A5EE078}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "200825_pg 기능 개발", "200825_pg 기능 개발\200825_pg 기능 개발.vcxproj", "{B4608E8A-DB85-41D3-9ED5-4223822ED62C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -431,6 +433,14 @@ Global
 		{67D93E38-8BCE-451F-B6FF-B8188A5EE078}.Release|x64.Build.0 = Release|x64
 		{67D93E38-8BCE-451F-B6FF-B8188A5EE078}.Release|x86.ActiveCfg = Release|Win32
 		{67D93E38-8BCE-451F-B6FF-B8188A5EE078}.Release|x86.Build.0 = Release|Win32
+		{B4608E8A-DB85-41D3-9ED5-4223822ED62C}.Debug|x64.ActiveCfg = Debug|x64
+		{B4608E8A-DB85-41D3-9ED5-4223822ED62C}.Debug|x64.Build.0 = Debug|x64
+		{B4608E8A-DB85-41D3-9ED5-4223822ED62C}.Debug|x86.ActiveCfg = Debug|Win32
+		{B4608E8A-DB85-41D3-9ED5-4223822ED62C}.Debug|x86.Build.0 = Debug|Win32
+		{B4608E8A-DB85-41D3-9ED5-4223822ED62C}.Release|x64.ActiveCfg = Release|x64
+		{B4608E8A-DB85-41D3-9ED5-4223822ED62C}.Release|x64.Build.0 = Release|x64
+		{B4608E8A-DB85-41D3-9ED5-4223822ED62C}.Release|x86.ActiveCfg = Release|Win32
+		{B4608E8A-DB85-41D3-9ED5-4223822ED62C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
