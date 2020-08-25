@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <algorithm>
 #include <vector>
+#include <string>
 #define pii pair<int, int>
 using namespace std;
 
@@ -19,9 +20,8 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	go(arr, 5);
-	go(arr2, 5);
+	string str = "123123";
+	str.erase(2,3);
 
-
-	cout << arr[4];
+	cout << str;
 }
