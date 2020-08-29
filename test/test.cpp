@@ -1,27 +1,24 @@
 ﻿#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <string>
-#define pii pair<int, int>
 using namespace std;
+int arr[8] = { 4,1,6,3,7,6,8,10 };
+int su[8];
 
-int arr[5];
-int arr2[5];
-int arr3[5];
-void go(int v[], int size)
+void go(int su_pos, int arr_pos, int n, int r)
 {
-	for (int i = 0; i < size; i++)
-		v[i] = 100;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			for (int k = j + 1; k < n; k++)
+			{
+				cout << arr[i] << ' ' << arr[j] << ' ' << arr[k] << '\n';
+			}
+		}
+	}
 }
 
 
 int main()
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
-
-	string str = "123123";
-	str.erase(2,3);
-
-	cout << str;
+	go(0, 0, 8, 3);
 }

@@ -7,7 +7,7 @@ using namespace std;
 
 int make(int n)
 {
-//	cout << min(n - 1, 27 - n) << ' ';
+	cout << min(n - 1, 27 - n) << ' ';
 	return min(n - 1, 27 - n);
 }
 
@@ -45,7 +45,7 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	string s = "BAABBBBAA";
+	string s = "JEROEN";
 	cout << solution(s);
 }
 
