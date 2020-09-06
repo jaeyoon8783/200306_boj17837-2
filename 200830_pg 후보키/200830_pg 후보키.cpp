@@ -10,7 +10,7 @@ int ans = 0;
 
 void make(vector<vector<string>> arr, int cur_pos, int cnt)
 {
-	if (cur_pos == arr[0].size())
+	if (cur_pos == arr[0].size()) // 유일성 체크
 	{
 
 		map<string, int> m;
@@ -38,7 +38,7 @@ void make(vector<vector<string>> arr, int cur_pos, int cnt)
 
 
 		m.clear();
-		for (int i = 0; i < cur_pos; i++)
+		for (int i = 0; i < cur_pos; i++) // 최소성 체크
 		{
 			if (check[i] == 0)
 				continue;

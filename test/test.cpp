@@ -1,73 +1,73 @@
-﻿#include <string>
-#include <vector>
+﻿#include <iostream>
 #include <algorithm>
-#include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
 
-int answer = 0x7f7f7f7f;
+int MOD = 20170805;
 
-void dfs(int n, int number, int idx, int sum, string strr) {
-	if (idx > 8) return;
+int solution(int m, int n, vector<vector<int>> city_map) {
+	int right[501][501];
+	int down[501][501];
 
-	if (sum == number) {
-		if (answer > idx)
-		{
-			cout << strr << '\n';
-			answer = idx;
+	for (int i = 0; i <= m; i++) {
+		for (int j = 0; j <= n; j++) {
+			right[i][j] = 0;
+			down[i][j] = 0;
 		}
-		
 	}
 
-	int tmp = 0;
-	for (int i = 0; i < 8; i++) {
-		tmp = tmp * 10 + n;
-		dfs(n, number, idx + i + 1, sum + tmp, strr+'+');
-		dfs(n, number, idx + i + 1, sum - tmp, strr + '-');
-		dfs(n, number, idx + i + 1, sum*tmp, strr + '*');
-		dfs(n, number, idx + i + 1, sum / tmp, strr + '/');
+	for (int x = 1; x <= m; x++) {
+		for (int y = 1; y <= n; y++) {
+			int type = city_map[x - 1][y - 1];
+			if ((x == 1) && (y == 1)) {
+				right[x][y] = 1;
+				down[x][y] = 1;
+			}
+			else if (type == 0) {
+				right[x][y] = (right[x][y - 1] + down[x - 1][y]) % MOD;
+				down[x][y] = (right[x][y - 1] + down[x - 1][y]) % MOD;
+			}
+			else if (type == 1) {
+				right[x][y] = 0;
+				down[x][y] = 0;
+			}
+			else if (type == 2) {
+				right[x][y] = right[x][y - 1];
+				down[x][y] = down[x - 1][y];
+			}
+		}
 	}
+
+	for (int i = 1; i <= m; i++)
+	{
+		for (int j = 1; j <= n; j++)
+		{
+			cout << right[i][j] << '/' << down[i][j] << ' ';
+		}
+		cout << '\n';
+	}
+
+	return right[m][n];
 }
 
-int solution(int N, int number) {
-	dfs(N, number, 0,0, "");
-	if (answer > 8) return -1;
-	else return answer;
-}
 
 int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
-	/*
-	int n = 8;
-	int num;
-	for (int i = 0; i < 10; i++)
-	{
-		cin >> num;
-		 answer = 0x7f7f7f7f;
-		cout << solution(n, num) << '!';
-	}
-	*/
-	int n = 8;
-	int num = 8890;
-	cout << solution(n, num) << '!';
+
+	int m = 4;
+	int n = 4;
+
+
+	//vector<vector<int>> cm = { {0,2,0,0,0,2}, {0,0,2,0,1,0}, {1,0,0,2,2,0} };
+	vector<vector<int>> cm = { {0,0,0,0}, {0,0,0,0}, {0,0,0,2}, {0,0,2,0} };
+	//vector<vector<int>> cm = { {0}, {0}, {0}, {0} };
+
+
+
+	cout << solution(m, n, cm);
+
+
 }
-/*
-void dfs(int n, int number, int idx, int sum, string str) {
-	if (idx > 8) return;
-
-	if (sum == number) {
-		answer = min(answer, idx);
-	}
-
-	int tmp = 0;
-	for (int i = 0; i < 8; i++) {
-		tmp = tmp * 10 + n;
-		dfs(n, number, idx + i + 1, sum + tmp, str+"+");
-		dfs(n, number, idx + i + 1, sum - tmp, str + "-");
-		dfs(n, number, idx + i + 1, sum*tmp, str + "*");
-		dfs(n, number, idx + i + 1, sum / tmp, str + "/");
-	}
-}
-
-*/
