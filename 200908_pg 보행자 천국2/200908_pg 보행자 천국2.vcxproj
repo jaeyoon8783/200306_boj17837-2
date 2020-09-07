@@ -20,11 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{BBA8193C-5D98-4E68-8915-61EDF1393D85}</ProjectGuid>
+    <ProjectGuid>{5C166165-2D85-4967-81BA-60A2B7C56A96}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My200907pg보행자천국</RootNamespace>
+    <RootNamespace>My200908pg보행자천국2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
-    <ProjectName>200907_pg 보행자 천국_ hard</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -156,7 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="200907_pg 보행자 천국.cpp" />
+    <ClCompile Include="200908_pg 보행자 천국2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
