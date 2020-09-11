@@ -6,11 +6,20 @@
 #define NA 20170805
 #define MOD 20170805
 using namespace std;
+int d[500][500][4] = { 0 }; //[i][j][0] == 서->동   [i][j][2] = 북->남
+
 
 
 int solution(int m, int n, vector<vector<int>> cm) // 내 코드 (틀림)
 {
-	int d[500][500][4] = { 0 }; //[i][j][0] == 서->동   [i][j][2] = 북->남
+
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+			d[i][j][0] = d[i][j][1] = 0;
+	}
+
+
 	if (m == 1 && n == 1)
 		return 1;
 
@@ -60,83 +69,6 @@ int solution(int m, int n, vector<vector<int>> cm) // 내 코드 (틀림)
 	int ans = (d[m - 1][n - 1][0] + d[m - 1][n-1][2]) % NA;
 	return ans;
 
-}
-
-int solution2(int m, int n, vector<vector<int>> city_map) // 정답코드
-{ //
-
-	int answer = 0;
-
-	int fromLeft[501][501] = { 0 };
-	int fromTop[501][501] = { 0 };
-
-	fromTop[1][1] = fromLeft[1][1] = 1;
-
-	for (int i = 1; i <= m; i++) {
-		for (int j = 1; j <= n; j++) {
-
-
-			if (city_map[i - 1][j - 1] == 0) {
-				fromLeft[i][j] += (fromLeft[i][j - 1] + fromTop[i - 1][j]) % MOD;
-				fromTop[i][j] += (fromLeft[i][j - 1] + fromTop[i - 1][j]) % MOD;
-			}
-			else if (city_map[i - 1][j - 1] == 1) {
-				fromLeft[i][j] = 0;
-				fromTop[i][j] = 0;
-			}
-			else {
-				fromLeft[i][j] = fromLeft[i][j - 1];
-				fromTop[i][j] = fromTop[i - 1][j];
-			}
-		}
-	}
-	/*
-	for (int i = 1; i <= m; i++)
-	{
-		for (int j = 1; j <= n; j++)
-		{
-			cout << fromLeft[i][j] << '/' << fromTop[i][j] << ' ';
-		}
-		cout << '\n';
-	}
-	*/
-
-	answer = (fromLeft[m][n - 1] + fromTop[m - 1][n]) % MOD;
-	return answer;
-}
-
-
-void go(vector<vector<int>> cm, int x, int y)
-{
-	if (x == cm.size() - 1 && y == cm.size() - 2)
-	{
-		if (solution(cm.size(), cm[0].size(), cm) != solution2(cm.size(), cm[0].size(), cm))
-		{
-			for (int i = 0; i < cm.size(); i++)
-			{
-				for (int j = 0; j < cm[0].size(); j++)
-				{
-					cout << cm[i][j] << ' ';
-				}
-				cout << '\n';
-			}
-			cout << '\n';
-
-		}
-		
-		return;
-	}
-
-	if (y == cm[0].size())
-	{
-		x++; y = 0;
-	}
-
-	for (int i = 0; i < 3; i++)
-	{
-		cm[x][y] = i;
-		go(cm, x, y + 1);
-	}
 }
 
 

@@ -9,17 +9,21 @@ using namespace std;
 vector<int> solution(int n, ll k)
 {
 	int check[21] = { 0 };
-	ll hap[20];
-	hap[0] = hap[1] = 1;
+	vector<int> ans;
+	
+	ll hap[21];
+	hap[0] = 1;
+	hap[1] = 1;
 
 	for (int i = 2; i <= 20; i++)
 	{
 		hap[i] = i * hap[i - 1];
 	}
-
+	/*
 
 	ll cur = 1;
-	vector<int> ans;
+	
+	
 	for (int i = n - 1; i >= 0; i--)
 	{
 		int j = 0;
@@ -47,10 +51,10 @@ vector<int> solution(int n, ll k)
 		cout << ans[i] << ' ';
 	}
 
-
+	*/
 	return ans;
 
-
+	
 }
 
 
@@ -62,8 +66,8 @@ int main()
 
 
 
-	int n;
-	int k;
-	vector<int> ans = solution(4, 11);
+	int n = 4;
+	int k = 11;
+	vector<int> ans = solution(n, k);
 
 }
