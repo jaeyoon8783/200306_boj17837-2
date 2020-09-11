@@ -197,4 +197,4 @@ int main()
 	//vector<string> board = { "...", "D.C", "C.." };
 	cout << solution(board.size(), board[0].size(), board);
 
-}
+} 
