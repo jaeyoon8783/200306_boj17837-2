@@ -1,69 +1,78 @@
 ﻿#include <iostream>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
 #include <string>
 #define pii pair<int, int>
-#define ll long long 
 using namespace std;
-
-vector<int> solution(int n, ll k)
+bool comp(const pii& a, const pii& b)
 {
-	int check[21] = { 0 };
-	ll hap[20];
-	hap[0] = hap[1] = 1;
-
-	for (int i = 2; i <= 20; i++)
-	{
-		hap[i] = i * hap[i - 1];
-	}
-
-
-	ll cur = 1;
-	vector<int> ans;
-	for (int i = n - 1; i >= 0; i--)
-	{
-		int j = 0;
-		while (1)
-		{
-			j++;
-			if (check[j] == 1)
-				continue;
-			cout << k << ' ' << (cur + hap[i]) << '\n';
-			if (k >= cur + hap[i])
-				cur += hap[i];
-			else
-			{
-				ans.push_back(j);
-				check[j] = 1;
-				break;
-			}
-
-		}
-	}
-
-
-	for (int i = 0; i < ans.size(); i++)
-	{
-		cout << ans[i] << ' ';
-	}
-
-
-	return ans;
-
-
+	if (a.second != b.second)
+		return a.second < b.second;
+	else
+		return a.first < b.first;
 }
 
+int solution(vector<string> lines) {
+	vector<pii> condition;
+	int zero = 0;
+	for (int i = 0; i < lines.size(); i++)
+	{
+		int h = stoi(lines[i].substr(11, 2));
+		int m = stoi(lines[i].substr(14, 2));
+		int s = stoi(lines[i].substr(17, 2));
+		int ms = stoi(lines[i].substr(20, 3));
+
+		int t_finish = ms;
+
+		m += (h * 60);
+		s += (m * 60);
+		ms += (s * 1000);
+
+		int ms2 = (lines[i][24] - '0') * 1000;
+		string ms3 = "0";
+		int j = 25;
+		while (lines[i][j] != 's')
+		{
+			if (lines[i][j] == '.')
+			{
+				j++;
+				continue;
+			}
+			ms3 += lines[i][j];
+			j++;
+		}
+		ms2 += stoi(ms3);
+
+		if (i == 0)
+			zero = ms - ms2 + 1;
+
+		condition.push_back({ ms - ms2 + 1 - zero, ms - zero }); //in
 
 
-int main()
-{
-	ios::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
+	}
 
+	sort(condition.begin(), condition.end(), comp);
+	//for (int i = 0; i < condition.size(); i++)
+	//	cout << condition[i].first << ' ' << condition[i].second << '\n';
 
+	int ans = 0;
+	for (int i = 0; i < condition.size(); i++)
+	{
+		int base = condition[i].second;
+		int base_thousand = condition[i].second + 999;
+		int tmp = 0;
 
-	int n;
-	int k;
-	vector<int> ans = solution(4, 11);
+		for (int j = 0; j < condition.size(); j++)
+		{
+			if (base_thousand < condition[j].first || base > condition[j].second)
+				continue;
+			else
+				tmp++;
+		}
+		//cout << tmp << ' ';
+		ans = max(ans, tmp);
 
+	}
+
+	return ans;
 }

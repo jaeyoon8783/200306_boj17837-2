@@ -13,6 +13,11 @@ int main()
 	
 
 
+	string str = "12345678901234567890";
 
+
+	str = str.substr(0, 15);
+
+	cout << str;
 
 }
